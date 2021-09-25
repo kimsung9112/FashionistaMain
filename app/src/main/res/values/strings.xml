@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Fashionista</string>
+    <string name="server_network_exception">인터넷 연결 상태를 확인해주세요.</string>
+
+    <string name="copy_right">© 2021 fashionista Mall ALL RIGHTS RESERVED</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="auth_google_key_value">1041976761194-258jql8vck60rqec12q7l8tbfc92o5ve.apps.googleusercontent.com</string>
+
+</resources>

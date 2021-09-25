@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="15dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/clothes_img"
+        android:layout_width="70dp"
+        android:layout_height="120dp"
+        android:background="@color/theme_sub_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/clothes_info_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="15dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/clothes_img"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/clothes_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/noto_sans_bold"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="옷 이름"
+            android:textColor="@color/theme_sub_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="15dp"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/clothes_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/noto_sans_regular"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="사이즈: M"
+                android:textColor="@color/theme_sub_color" />
+
+            <TextView
+                android:id="@+id/clothes_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/noto_sans_regular"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="상세설명: #여름 #블루 #기능성"
+                android:textColor="@color/theme_sub_color" />
+
+            <TextView
+                android:id="@+id/clothes_shop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/noto_sans_regular"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="쇼핑몰: 무신사/하이버"
+                android:textColor="@color/theme_sub_color" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

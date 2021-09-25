@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1041976761194",
+    "project_id": "fashionista-ksh",
+    "storage_bucket": "fashionista-ksh.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1041976761194:android:0cd2a276e8ca4c2e4ae313",
+        "android_client_info": {
+          "package_name": "com.study.poly.fashionista"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1041976761194-8v7vs8ihq5pe6kibg5b1v0csi04ihu0c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.study.poly.fashionista",
+            "certificate_hash": "d22578bab88c337161ef826e4b6041e77a93438a"
+          }
+        },
+        {
+          "client_id": "1041976761194-258jql8vck60rqec12q7l8tbfc92o5ve.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBznubs9OFJ0B4g5Cgq6GE8IfZMDRWfCT8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1041976761194-258jql8vck60rqec12q7l8tbfc92o5ve.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

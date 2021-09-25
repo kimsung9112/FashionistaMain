@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/clothes_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/noto_sans_bold"
+        android:includeFontPadding="false"
+        android:text="T-SHIRT"
+        android:textColor="@color/theme_sub_color"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/btn_more_clothes"
+        android:layout_width="25dp"
+        android:layout_height="20dp"
+        android:src="@drawable/icon_btn_more"
+        app:layout_constraintBottom_toBottomOf="@id/clothes_name"
+        app:layout_constraintEnd_toEndOf="@id/clothes_name"
+        app:layout_constraintTop_toTopOf="@id/clothes_name" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clothes_name"
+        tools:listitem="@layout/listview_item_clothes" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

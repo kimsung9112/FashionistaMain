@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_color"
+    tools:context=".view.main.home.ClothesDetailActivity">
+
+    <include
+        android:id="@+id/layout_title"
+        layout="@layout/layout_title"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/clothes_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_title" />
+
+    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+        android:id="@+id/dot_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:dotsColor="#A1937E"
+        app:dotsSize="12dp"
+        app:layout_constraintBottom_toBottomOf="@id/clothes_viewpager"
+        app:layout_constraintEnd_toEndOf="@id/clothes_viewpager"
+        app:layout_constraintStart_toStartOf="@id/clothes_viewpager"
+        app:selectedDotColor="@color/theme_sub_color" />
+
+    <LinearLayout
+        android:id="@+id/clothes_info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="25dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clothes_viewpager">
+
+        <TextView
+            android:id="@+id/clothes_shop_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/noto_sans_regular"
+            android:includeFontPadding="false"
+            android:text="쇼핑몰: 무신사"
+            android:textColor="@color/theme_sub_color"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/clothes_name_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/noto_sans_regular"
+            android:includeFontPadding="false"
+            android:text="옷이름: 겨울 아우터"
+            android:textColor="@color/theme_sub_color"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/clothes_size_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/noto_sans_regular"
+            android:includeFontPadding="false"
+            android:text="사이즈"
+            android:textColor="@color/theme_sub_color"
+            android:textSize="18dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/select_round_corner"
+                android:fontFamily="@font/noto_sans_bold"
+                android:text="S"
+                android:textColor="@color/theme_sub_color"
+                android:textSize="12dp" />
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/select_round_corner"
+                android:fontFamily="@font/noto_sans_bold"
+                android:text="M"
+                android:textColor="@color/theme_sub_color"
+                android:textSize="12dp" />
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/select_round_corner"
+                android:fontFamily="@font/noto_sans_bold"
+                android:text="L"
+                android:textColor="@color/theme_sub_color"
+                android:textSize="12dp" />
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/select_round_corner"
+                android:fontFamily="@font/noto_sans_bold"
+                android:text="XL"
+                android:textColor="@color/theme_sub_color"
+                android:textSize="12dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/noto_sans_regular"
+            android:includeFontPadding="false"
+            android:text="상품상세"
+            android:textColor="@color/theme_sub_color"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/clothes_info_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/noto_sans_regular"
+            android:includeFontPadding="false"
+            android:text="#겨울, #따뜻한, #신상품"
+            android:textColor="@color/theme_sub_color"
+            android:textSize="12dp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_save_clothes_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginBottom="30dp"
+        android:background="@color/theme_sub_color"
+        android:fontFamily="@font/noto_sans_regular"
+        android:text="옷장에 넣기"
+        android:textColor="@color/theme_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
