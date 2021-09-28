@@ -1,43 +1,33 @@
 package com.study.poly.fashionista.view.login
 
-import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-
-import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import com.study.poly.fashionista.R
 import com.study.poly.fashionista.base.BaseActivity
-import com.study.poly.fashionista.databinding.ActivityLoginBinding
-import com.study.poly.fashionista.utility.*
-import com.study.poly.fashionista.view.main.HomeActivity
-import java.util.*
+import com.study.poly.fashionista.databinding.ActivityJoinBinding
+import com.study.poly.fashionista.utility.Constant.AuthOverLap
+import com.study.poly.fashionista.utility.Constant.EmailFormError
+import com.study.poly.fashionista.utility.hideUI
+import com.study.poly.fashionista.utility.visibleUI
 
-class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.inflate(it) }) {
+class JoinActivity : BaseActivity<ActivityJoinBinding>({ ActivityJoinBinding.inflate(it) }) {
 
 
     private val firebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        FirebaseApp.initializeApp(this)
 
         viewInit()
     }
 
-    private fun viewInit() {
+    private fun viewInit() = with(binding) {
 
-        binding.joinBtn.setOnClickListener {
-            val intent = Intent(this, JoinActivity::class.java)
-            startActivity(intent)
-            moveNextAnim()
-        }
+        titleLayout.titleTv.text = "회원가입"
+        titleLayout.btnBack.setOnClickListener { onBackPressed() }
 
-        binding.loginBtn.setOnClickListener {
+        joinBtn.setOnClickListener {
             authCheck()
         }
     }
@@ -56,34 +46,33 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.
             }
 
             else -> {
-                firebaseSendCheck()
+                firebaseAuthSend()
                 infoStateTv.hideUI()
             }
         }
     }
 
-    private fun firebaseSendCheck() = with(binding) {
+    private fun firebaseAuthSend() = with(binding) {
 
         val email = binding.emailEdit.text.toString()
         val password = binding.passwordEdit.text.toString()
 
-        firebaseAuth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this@LoginActivity) { task ->
+        firebaseAuth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
 
                 if (task.isSuccessful) {
-
-                    moveMainPage(firebaseAuth.currentUser)
+                    onBackPressed()
                 }
-
             }
             .addOnFailureListener {
-                when {
 
-                    Constant.AuthOverLap in it.toString() -> {
+                when  {
+
+                    AuthOverLap in it.toString() -> {
                         infoStateTv.text = "이미 존재하는 계정입니다."
                     }
 
-                    Constant.EmailFormError in it.toString() -> {
+                    EmailFormError in it.toString() -> {
                         infoStateTv.text = "이메일 형식이 아닙니다."
                     }
 
@@ -95,14 +84,4 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.
                 infoStateTv.visibleUI()
             }
     }
-
-    private fun moveMainPage(user: FirebaseUser?) {
-        if (user != null) {
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
-            moveNextAnim()
-            finish()
-        }
-    }
-
 }

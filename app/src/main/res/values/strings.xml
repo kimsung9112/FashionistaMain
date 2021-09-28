@@ -6,5 +6,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="auth_google_key_value">1041976761194-258jql8vck60rqec12q7l8tbfc92o5ve.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">1277719699412627</string>
+    <string name="fb_login_protocol_scheme">fb1277719699412627</string>
+
 
 </resources>
