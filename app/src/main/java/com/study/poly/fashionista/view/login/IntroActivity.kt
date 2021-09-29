@@ -17,6 +17,8 @@ import android.content.pm.PackageManager
 
 import android.content.pm.PackageInfo
 import android.util.Base64
+import com.google.firebase.auth.FirebaseAuth
+import com.study.poly.fashionista.view.main.HomeActivity
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
@@ -29,6 +31,8 @@ class IntroActivity : BaseActivity<ActivityIntroBinding>({ ActivityIntroBinding.
         private const val WIFI_STATE = "Wifi_State"
         private const val CELLULAR_STATE = "Cellular_State"
     }
+
+    private val auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,7 +79,11 @@ class IntroActivity : BaseActivity<ActivityIntroBinding>({ ActivityIntroBinding.
 
         Handler(Looper.getMainLooper()).postDelayed(
             {
-                val intent = Intent(this, LoginActivity::class.java)
+                val intent = if (auth.currentUser == null) {
+                    Intent(this, LoginActivity::class.java)
+                } else {
+                    Intent(this, HomeActivity::class.java)
+                }
                 startActivity(intent)
                 moveNextAnim()
             }, 1000

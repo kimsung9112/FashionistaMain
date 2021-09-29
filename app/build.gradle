@@ -70,7 +70,8 @@ dependencies {
     // 파이어베이스 로그인 설정
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.google.android.gms:play-services-auth:19.2.0'
-
+    // 스토리지
+    implementation 'com.firebaseui:firebase-ui-storage:7.2.0'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

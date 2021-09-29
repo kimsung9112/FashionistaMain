@@ -6,7 +6,10 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.study.poly.fashionista.R
 
 fun Activity.moveNextAnim() {
@@ -31,6 +34,25 @@ fun View.hideUI() {
 
 fun View.visibleUI() {
     visibility = View.VISIBLE
+}
+
+fun ImageView.loadImage(imgUrl: String) {
+    Glide.with(context)
+        .load(imgUrl)
+        .placeholder(R.color.theme_sub_color)
+        .error(R.color.theme_sub_color)
+        .into(this)
+}
+
+fun ImageView.loadCircleImage(imgUrl: String) {
+
+    Glide.with(context)
+        .load(imgUrl)
+        .circleCrop()
+        .apply(RequestOptions.circleCropTransform())
+        .placeholder(R.drawable.round_circle_gray)
+        .error(R.drawable.round_circle_gray)
+        .into(this)
 }
 
 fun EditText.onMyTextChange(completion: (Editable) -> Unit) {

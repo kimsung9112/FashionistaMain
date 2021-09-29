@@ -18,15 +18,15 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/black" />
+        android:layout_height="0.5dp"
+        android:background="#ededed" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@color/theme_color"
+        android:background="@color/theme_sub_color"
         app:itemIconSize="35dp"
         app:itemRippleColor="@color/white"
         app:labelVisibilityMode="unlabeled"
