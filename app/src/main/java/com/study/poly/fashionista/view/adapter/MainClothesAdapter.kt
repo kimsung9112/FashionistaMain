@@ -5,8 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.study.poly.fashionista.databinding.ListviewItemClothesBinding
 import com.study.poly.fashionista.utility.loadCircleImage
+import com.study.poly.fashionista.utility.onThrottleFirstClick
 
-class MainClothesAdapter(private val clothesUrlList: ArrayList<String>) :
+class MainClothesAdapter(
+    private val clothesUrlList: ArrayList<String>,
+    val viewHandler: (itemName: String) -> Unit
+) :
     RecyclerView.Adapter<MainClothesAdapter.MainClothesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainClothesViewHolder {
@@ -25,9 +29,12 @@ class MainClothesAdapter(private val clothesUrlList: ArrayList<String>) :
     inner class MainClothesViewHolder(private val binding: ListviewItemClothesBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bindWithView(clothesUrl: String) {
+        fun bindWithView(clothesUrl: String) = with(binding) {
 
-            binding.clothesItem.loadCircleImage(clothesUrl)
+            clothesItem.loadCircleImage(clothesUrl)
+            clothesItem.onThrottleFirstClick {
+                viewHandler.invoke(clothesUrl)
+            }
         }
     }
 

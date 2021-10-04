@@ -1,21 +1,28 @@
 package com.study.poly.fashionista.view.main.home
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.google.firebase.storage.FirebaseStorage
 import com.study.poly.fashionista.base.BaseFragment
 import com.study.poly.fashionista.databinding.FragmentHomeBinding
-import com.study.poly.fashionista.utility.hideUI
-import com.study.poly.fashionista.utility.onThrottleFirstClick
-import com.study.poly.fashionista.utility.toast
-import com.study.poly.fashionista.utility.visibleUI
+import com.study.poly.fashionista.utility.*
+
+import com.study.poly.fashionista.utility.Constant.PATH_BANNER
+import com.study.poly.fashionista.utility.Constant.PATH_HOOD
+import com.study.poly.fashionista.utility.Constant.PATH_OUTER
+import com.study.poly.fashionista.utility.Constant.PATH_PANTS
+import com.study.poly.fashionista.utility.Constant.PATH_T_SHIRT
+
 import com.study.poly.fashionista.view.adapter.BannerAdapter
 import com.study.poly.fashionista.view.adapter.MainClothesAdapter
-import kotlinx.coroutines.*
+
 import java.lang.Exception
 import java.net.UnknownHostException
+
 import kotlin.coroutines.CoroutineContext
+import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
 
 
@@ -28,12 +35,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         get() = Dispatchers.Main + job
 
     private val storageRef = FirebaseStorage.getInstance()
+
     private val arrayPath = arrayListOf(
-        "/main_img/banner",
-        "/main_img/hood",
-        "/main_img/outer",
-        "/main_img/pants",
-        "/main_img/t_shirt"
+        PATH_BANNER,
+        PATH_HOOD,
+        PATH_OUTER,
+        PATH_PANTS,
+        PATH_T_SHIRT
     )
 
     /** 배너 */
@@ -45,17 +53,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private val pantsList = ArrayList<String>()
     private val tShirtList = ArrayList<String>()
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         viewInit()
     }
 
-    private fun viewInit() {
+    private fun viewInit() = with(binding) {
 
+        layoutHood.clothesName.text = "HOOD"
+        layoutOvercoat.clothesName.text = "OUTER"
+        layoutPants.clothesName.text = "PANTS"
+        layoutShirt.clothesName.text = "T-SHIRT"
 
-        binding.notNetworkLayout.refreshBtn.onThrottleFirstClick {
-            binding.notNetworkLayout.root.hideUI()
+        notNetworkLayout.refreshBtn.onThrottleFirstClick {
+            notNetworkLayout.root.hideUI()
             getData()
         }
 
@@ -96,27 +109,27 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             val listClothes = storageRef.reference.child(path).listAll()
 
             when (path) {
-                "/main_img/banner" -> {
+                PATH_BANNER -> {
                     listClothes.await().items.forEach { storage ->
                         bannerList.add(storage.downloadUrl.await().toString())
                     }
                 }
-                "/main_img/hood" -> {
+                PATH_HOOD -> {
                     listClothes.await().items.forEach { storage ->
                         hoodList.add(storage.downloadUrl.await().toString())
                     }
                 }
-                "/main_img/outer" -> {
+                PATH_OUTER -> {
                     listClothes.await().items.forEach { storage ->
                         outerList.add(storage.downloadUrl.await().toString())
                     }
                 }
-                "/main_img/pants" -> {
+                PATH_PANTS -> {
                     listClothes.await().items.forEach { storage ->
                         pantsList.add(storage.downloadUrl.await().toString())
                     }
                 }
-                "/main_img/t_shirt" -> {
+                PATH_T_SHIRT -> {
                     listClothes.await().items.forEach { storage ->
                         tShirtList.add(storage.downloadUrl.await().toString())
                     }
@@ -130,7 +143,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 dismissProgress()
             }
         }
-
     }
 
     private fun setViewPager() = with(binding) {
@@ -141,23 +153,65 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private fun setRecyclerView() = with(binding) {
 
-        layoutHood.clothesName.text = "HOOD"
-        layoutOvercoat.clothesName.text = "OUTER"
-        layoutPants.clothesName.text = "PANTS"
-        layoutShirt.clothesName.text = "T-SHIRT"
+        val intent = Intent(requireContext(), ClothesDetailActivity::class.java)
 
         layoutHood.clothesRecyclerview.let { list ->
-            list.adapter = MainClothesAdapter(hoodList)
+            list.adapter = MainClothesAdapter(hoodList) { url ->
+                intent.putExtra("",url)
+                startActivity(intent)
+                requireActivity().moveNextAnim()
+            }
         }
         layoutOvercoat.clothesRecyclerview.let { list ->
-            list.adapter = MainClothesAdapter(outerList)
+            list.adapter = MainClothesAdapter(outerList) { url ->
+                intent.putExtra("",url)
+                startActivity(intent)
+                requireActivity().moveNextAnim()
+            }
         }
         layoutPants.clothesRecyclerview.let { list ->
-            list.adapter = MainClothesAdapter(pantsList)
+            list.adapter = MainClothesAdapter(pantsList) { url ->
+                intent.putExtra("",url)
+                startActivity(intent)
+                requireActivity().moveNextAnim()
+            }
         }
         layoutShirt.clothesRecyclerview.let { list ->
-            list.adapter = MainClothesAdapter(tShirtList)
+            list.adapter = MainClothesAdapter(tShirtList) { url ->
+                intent.putExtra("",url)
+                startActivity(intent)
+                requireActivity().moveNextAnim()
+            }
         }
+
+        setClickListener()
+    }
+
+    private fun setClickListener() = with(binding) {
+
+        val intent = Intent(requireContext(), ClothesMoreActivity::class.java)
+
+        layoutHood.btnMoreClothes.onThrottleFirstClick {
+            intent.putExtra(ClothesMoreActivity.CLOTHES_TYPE, ClothesType.HOOD)
+            startActivity(intent)
+            requireActivity().moveNextAnim()
+        }
+        layoutOvercoat.btnMoreClothes.onThrottleFirstClick {
+            intent.putExtra(ClothesMoreActivity.CLOTHES_TYPE, ClothesType.OUTER)
+            startActivity(intent)
+            requireActivity().moveNextAnim()
+        }
+        layoutPants.btnMoreClothes.onThrottleFirstClick {
+            intent.putExtra(ClothesMoreActivity.CLOTHES_TYPE, ClothesType.PANTS)
+            startActivity(intent)
+            requireActivity().moveNextAnim()
+        }
+        layoutShirt.btnMoreClothes.onThrottleFirstClick {
+            intent.putExtra(ClothesMoreActivity.CLOTHES_TYPE, ClothesType.T_SHIRT)
+            startActivity(intent)
+            requireActivity().moveNextAnim()
+        }
+
     }
 
     override fun onDestroy() {

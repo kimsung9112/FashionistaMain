@@ -1,12 +1,14 @@
 package com.study.poly.fashionista.view.main.home
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.study.poly.fashionista.R
+import com.study.poly.fashionista.base.BaseActivity
+import com.study.poly.fashionista.databinding.ActivityClothesDetailBinding
 
-class ClothesDetailActivity : AppCompatActivity() {
+class ClothesDetailActivity :
+    BaseActivity<ActivityClothesDetailBinding>({ ActivityClothesDetailBinding.inflate(it) }) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_clothes_detail)
+
     }
 }

@@ -54,8 +54,8 @@ class JoinActivity : BaseActivity<ActivityJoinBinding>({ ActivityJoinBinding.inf
 
     private fun firebaseAuthSend() = with(binding) {
 
-        val email = binding.emailEdit.text.toString()
-        val password = binding.passwordEdit.text.toString()
+        val email = emailEdit.text.toString()
+        val password = passwordEdit.text.toString()
 
         firebaseAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
