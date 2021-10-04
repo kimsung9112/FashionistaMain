@@ -57,7 +57,7 @@
                 android:textColor="@color/theme_sub_color" />
 
             <TextView
-                android:id="@+id/clothes_info"
+                android:id="@+id/clothes_detail_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -81,8 +81,9 @@
 
         </LinearLayout>
 
-
     </LinearLayout>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -39,6 +39,7 @@ fun View.visibleUI() {
 fun ImageView.loadImage(imgUrl: String) {
     Glide.with(context)
         .load(imgUrl)
+        .centerCrop()
         .placeholder(R.color.theme_sub_color)
         .error(R.color.theme_sub_color)
         .into(this)
@@ -64,6 +65,7 @@ fun EditText.onMyTextChange(completion: (Editable) -> Unit) {
         }
     })
 }
+
 
 var isClicked = false
 

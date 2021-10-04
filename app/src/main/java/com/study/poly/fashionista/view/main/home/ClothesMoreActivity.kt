@@ -1,17 +1,40 @@
 package com.study.poly.fashionista.view.main.home
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.FirebaseFirestore
 import com.study.poly.fashionista.R
 import com.study.poly.fashionista.base.BaseActivity
+import com.study.poly.fashionista.data.entity.ClothesEntity
 import com.study.poly.fashionista.databinding.ActivityClothesMoreBinding
+import com.study.poly.fashionista.utility.ClothesType
+import com.study.poly.fashionista.utility.hideUI
+import com.study.poly.fashionista.utility.onThrottleFirstClick
+import com.study.poly.fashionista.utility.visibleUI
+import com.study.poly.fashionista.view.adapter.MoreClothesAdapter
+import com.study.poly.fashionista.view.dialog.MyClothesSizeDialog
+import kotlinx.coroutines.*
+import kotlinx.coroutines.tasks.await
+import java.lang.Exception
+import java.net.UnknownHostException
+import kotlin.coroutines.CoroutineContext
 
 class ClothesMoreActivity :
-    BaseActivity<ActivityClothesMoreBinding>({ ActivityClothesMoreBinding.inflate(it) }) {
+    BaseActivity<ActivityClothesMoreBinding>({ ActivityClothesMoreBinding.inflate(it) }),
+    CoroutineScope {
 
     companion object {
         const val CLOTHES_TYPE = "clothes_type"
     }
+
+    private lateinit var db: CollectionReference
+    private val clothesList = ArrayList<ClothesEntity>()
+
+    private val job: Job = Job()
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + job
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,10 +42,98 @@ class ClothesMoreActivity :
         viewInit()
     }
 
-    private fun viewInit() {
+    private fun viewInit() = with(binding) {
+
+        val titleName = intent.getStringExtra(CLOTHES_TYPE)
+
+        val path = when (titleName) {
+
+            ClothesType.HOOD.clothes -> {
+                "HOOD_INFO"
+            }
+            ClothesType.OUTER.clothes -> {
+                "OUTER_INFO"
+            }
+            ClothesType.PANTS.clothes -> {
+                "PANTS_INFO"
+            }
+            else -> {
+                "T_SHIRT_INFO"
+            }
+        }
+
+        titleLayout.titleTv.text = titleName
+        titleLayout.btnBack.setOnClickListener { onBackPressed() }
+
+        db = FirebaseFirestore.getInstance().collection(path)
+
+        notNetworkLayout.refreshBtn.onThrottleFirstClick {
+            notNetworkLayout.root.hideUI()
+            getData()
+        }
+        getData()
+        dialogShow()
+    }
+
+    private fun getData() {
+
+        launch {
+            try {
+                showProgress()
+                getList()
+            } catch (e: UnknownHostException) {
+                binding.notNetworkLayout.root.visibleUI()
+            } catch (e: Exception) {
+                Log.d("로그", "error $e")
+            }
+        }
+    }
+
+    private suspend fun showProgress() = withContext(coroutineContext) {
+        binding.loadingBar.root.visibleUI()
+    }
+
+    private suspend fun dismissProgress() = withContext(coroutineContext) {
+        binding.loadingBar.root.hideUI()
+    }
+
+    private suspend fun getList() = withContext(Dispatchers.IO) {
+
+        clothesList.clear()
+
+        db.get().await().documents.forEach { document ->
+            document.toObject(ClothesEntity::class.java)?.let { data ->
+                clothesList.add(data)
+            }
+        }.run {
+            withContext(Dispatchers.Main) {
+                setRecyclerView()
+                dismissProgress()
+            }
+        }
+    }
+
+    private fun setRecyclerView() = with(binding) {
+
+        clothesRecyclerview.let { list ->
+            list.adapter = MoreClothesAdapter(clothesList)
+            list.layoutManager = LinearLayoutManager(this@ClothesMoreActivity)
+        }
+    }
+
+    private fun dialogShow() {
+
+        val dialog = MyClothesSizeDialog(this)
+
+        binding.btnSizeGet.onThrottleFirstClick {
+            dialog.show()
+        }
 
     }
 
-
-
+    override fun onDestroy() {
+        coroutineContext.cancel()
+        super.onDestroy()
+    }
 }
+

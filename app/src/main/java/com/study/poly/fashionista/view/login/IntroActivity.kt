@@ -19,6 +19,7 @@ import android.content.pm.PackageInfo
 import android.util.Base64
 import com.google.firebase.auth.FirebaseAuth
 import com.study.poly.fashionista.view.main.HomeActivity
+import com.study.poly.fashionista.view.main.home.ClothesMoreActivity
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
