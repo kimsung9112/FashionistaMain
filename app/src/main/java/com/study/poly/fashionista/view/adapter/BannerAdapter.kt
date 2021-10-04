@@ -25,7 +25,6 @@ class BannerAdapter(private val bannerUrlList: ArrayList<String>) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bindWithView(bannerUrl: String) {
-
             binding.bannerImg.loadImage(bannerUrl)
         }
     }

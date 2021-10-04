@@ -166,25 +166,29 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
         layoutHood.clothesRecyclerview.let { list ->
             list.adapter = MainClothesAdapter(hoodList) { url ->
-                intent.putExtra("", url)
+                intent.putExtra(ClothesDetailActivity.CATEGORY_PATH, "HOOD_INFO")
+                intent.putExtra(ClothesDetailActivity.IMAGE_PATH, url)
                 moveNext(intent)
             }
         }
         layoutOvercoat.clothesRecyclerview.let { list ->
             list.adapter = MainClothesAdapter(outerList) { url ->
-                intent.putExtra("", url)
+                intent.putExtra(ClothesDetailActivity.CATEGORY_PATH, "OUTER_INFO")
+                intent.putExtra(ClothesDetailActivity.IMAGE_PATH, url)
                 moveNext(intent)
             }
         }
         layoutPants.clothesRecyclerview.let { list ->
             list.adapter = MainClothesAdapter(pantsList) { url ->
-                intent.putExtra("", url)
+                intent.putExtra(ClothesDetailActivity.CATEGORY_PATH, "PANTS_INFO")
+                intent.putExtra(ClothesDetailActivity.IMAGE_PATH, url)
                 moveNext(intent)
             }
         }
         layoutShirt.clothesRecyclerview.let { list ->
             list.adapter = MainClothesAdapter(tShirtList) { url ->
-                intent.putExtra("", url)
+                intent.putExtra(ClothesDetailActivity.CATEGORY_PATH, "T_SHIRT_INFO")
+                intent.putExtra(ClothesDetailActivity.IMAGE_PATH, url)
                 moveNext(intent)
             }
         }

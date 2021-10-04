@@ -1,5 +1,6 @@
 package com.study.poly.fashionista.view.main.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,10 +10,7 @@ import com.study.poly.fashionista.R
 import com.study.poly.fashionista.base.BaseActivity
 import com.study.poly.fashionista.data.entity.ClothesEntity
 import com.study.poly.fashionista.databinding.ActivityClothesMoreBinding
-import com.study.poly.fashionista.utility.ClothesType
-import com.study.poly.fashionista.utility.hideUI
-import com.study.poly.fashionista.utility.onThrottleFirstClick
-import com.study.poly.fashionista.utility.visibleUI
+import com.study.poly.fashionista.utility.*
 import com.study.poly.fashionista.view.adapter.MoreClothesAdapter
 import com.study.poly.fashionista.view.dialog.MyClothesSizeDialog
 import kotlinx.coroutines.*
@@ -31,7 +29,7 @@ class ClothesMoreActivity :
 
     private lateinit var db: CollectionReference
     private val clothesList = ArrayList<ClothesEntity>()
-
+    private var path: String = ""
     private val job: Job = Job()
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + job
@@ -46,7 +44,7 @@ class ClothesMoreActivity :
 
         val titleName = intent.getStringExtra(CLOTHES_TYPE)
 
-        val path = when (titleName) {
+        path = when (titleName) {
 
             ClothesType.HOOD.clothes -> {
                 "HOOD_INFO"
@@ -84,7 +82,7 @@ class ClothesMoreActivity :
             } catch (e: UnknownHostException) {
                 binding.notNetworkLayout.root.visibleUI()
             } catch (e: Exception) {
-                Log.d("로그", "error $e")
+                toast("error:$e")
             }
         }
     }
@@ -115,9 +113,16 @@ class ClothesMoreActivity :
 
     private fun setRecyclerView() = with(binding) {
 
+        val nextIntent = Intent(this@ClothesMoreActivity, ClothesDetailActivity::class.java)
+
         clothesRecyclerview.let { list ->
-            list.adapter = MoreClothesAdapter(clothesList)
             list.layoutManager = LinearLayoutManager(this@ClothesMoreActivity)
+            list.adapter = MoreClothesAdapter(clothesList) { url ->
+                nextIntent.putExtra(ClothesDetailActivity.CATEGORY_PATH, path)
+                nextIntent.putExtra(ClothesDetailActivity.IMAGE_PATH, url)
+                startActivity(nextIntent)
+                moveNextAnim()
+            }
         }
     }
 

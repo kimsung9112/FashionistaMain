@@ -3,14 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/theme_color">
+    android:background="#99000000"
+    android:padding="30dp">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/theme_color"
         android:orientation="vertical"
         android:padding="15dp"
-        app:layout_constraintBottom_toTopOf="@id/under_line"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -51,6 +54,63 @@
             android:maxLines="1"
             android:textColor="@color/black" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/noto_sans_bold"
+            android:text="카테고리를 선택해주세요."
+            android:textColor="#444444" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/hood_tv"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/select_round_corner"
+                android:fontFamily="@font/noto_sans_bold"
+                android:gravity="center"
+                android:text="HOOD"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/pants_tv"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/select_round_corner"
+                android:fontFamily="@font/noto_sans_bold"
+                android:gravity="center"
+                android:text="PANTS"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/t_shirt_tv"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/select_round_corner"
+                android:fontFamily="@font/noto_sans_bold"
+                android:gravity="center"
+                android:text="T-SHIRT"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/outer_tv"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:background="@drawable/select_round_corner"
+                android:fontFamily="@font/noto_sans_bold"
+                android:gravity="center"
+                android:text="OUTER"
+                android:textSize="10dp" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
     <View
@@ -58,7 +118,7 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="@color/black"
-        app:layout_constraintBottom_toTopOf="@id/layout_button" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <LinearLayout
         android:id="@+id/layout_button"
@@ -66,11 +126,12 @@
         android:layout_height="56dp"
         android:orientation="horizontal"
         android:weightSum="2"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/under_line">
 
         <Button
+            android:id="@+id/btn_cancel"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -87,6 +148,7 @@
             android:background="@color/black" />
 
         <Button
+            android:id="@+id/btn_check"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -98,6 +160,13 @@
             android:textSize="18dp" />
 
     </LinearLayout>
+
+    <View
+        android:id="@+id/bottom_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/layout_button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

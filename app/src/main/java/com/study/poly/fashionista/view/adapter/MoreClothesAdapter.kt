@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.study.poly.fashionista.data.entity.ClothesEntity
 import com.study.poly.fashionista.databinding.ListviewItemMoreClothesBinding
 import com.study.poly.fashionista.utility.loadImage
+import com.study.poly.fashionista.utility.onThrottleFirstClick
 
 class MoreClothesAdapter(
-    private val clothesList: ArrayList<ClothesEntity>
+    private val clothesList: ArrayList<ClothesEntity>,
+    val viewHandler: (itemName: String) -> Unit
 ) : RecyclerView.Adapter<MoreClothesAdapter.MoreClothesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoreClothesViewHolder {
@@ -37,6 +39,10 @@ class MoreClothesAdapter(
             clothesSize.text = "사이즈: M"  // 추후 DB 가져올 것
             clothesDetailInfo.text = "상세설명: ${clothesInfo.Info}"
             clothesShop.text = "쇼핑몰: ${clothesInfo.Shop}"
+
+            binding.root.onThrottleFirstClick {
+                viewHandler.invoke(clothesInfo.TitlePath)
+            }
         }
     }
 

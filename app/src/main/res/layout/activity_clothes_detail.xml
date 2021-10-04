@@ -16,151 +16,184 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/clothes_viewpager"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_title" />
+        app:layout_constraintTop_toBottomOf="@id/layout_title">
 
-    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
-        android:id="@+id/dot_indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:dotsColor="#A1937E"
-        app:dotsSize="12dp"
-        app:layout_constraintBottom_toBottomOf="@id/clothes_viewpager"
-        app:layout_constraintEnd_toEndOf="@id/clothes_viewpager"
-        app:layout_constraintStart_toStartOf="@id/clothes_viewpager"
-        app:selectedDotColor="@color/theme_sub_color" />
-
-    <LinearLayout
-        android:id="@+id/clothes_info_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="25dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/clothes_viewpager">
-
-        <TextView
-            android:id="@+id/clothes_shop_tv"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/clothes_viewpager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/noto_sans_regular"
-            android:includeFontPadding="false"
-            android:text="쇼핑몰: 무신사"
-            android:textColor="@color/theme_sub_color"
-            android:textSize="18dp" />
+            android:layout_height="350dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/clothes_name_tv"
-            android:layout_width="match_parent"
+        <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+            android:id="@+id/dot_indicator"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/noto_sans_regular"
-            android:includeFontPadding="false"
-            android:text="옷이름: 겨울 아우터"
-            android:textColor="@color/theme_sub_color"
-            android:textSize="18dp" />
-
-        <TextView
-            android:id="@+id/clothes_size_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/noto_sans_regular"
-            android:includeFontPadding="false"
-            android:text="사이즈"
-            android:textColor="@color/theme_sub_color"
-            android:textSize="18dp" />
+            android:layout_marginBottom="20dp"
+            app:dotsColor="#A1937E"
+            app:dotsSize="6dp"
+            app:layout_constraintBottom_toBottomOf="@id/clothes_viewpager"
+            app:layout_constraintEnd_toEndOf="@id/clothes_viewpager"
+            app:layout_constraintStart_toStartOf="@id/clothes_viewpager"
+            app:selectedDotColor="@color/theme_sub_color" />
 
         <LinearLayout
+            android:id="@+id/clothes_info_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="25dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clothes_viewpager">
 
-            <Button
-                android:layout_width="60dp"
+            <TextView
+                android:id="@+id/clothes_shop_tv"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:background="@drawable/select_round_corner"
-                android:fontFamily="@font/noto_sans_bold"
-                android:text="S"
+                android:fontFamily="@font/noto_sans_regular"
+                android:includeFontPadding="false"
+                android:text="쇼핑몰: 무신사"
                 android:textColor="@color/theme_sub_color"
-                android:textSize="12dp" />
+                android:textSize="18dp" />
 
-            <Button
-                android:layout_width="60dp"
+            <TextView
+                android:id="@+id/clothes_name_tv"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:background="@drawable/select_round_corner"
-                android:fontFamily="@font/noto_sans_bold"
-                android:text="M"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/noto_sans_regular"
+                android:includeFontPadding="false"
+                android:text="옷이름: 겨울 아우터"
                 android:textColor="@color/theme_sub_color"
-                android:textSize="12dp" />
+                android:textSize="18dp" />
 
-            <Button
-                android:layout_width="60dp"
+            <TextView
+                android:id="@+id/clothes_size_tv"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:background="@drawable/select_round_corner"
-                android:fontFamily="@font/noto_sans_bold"
-                android:text="L"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/noto_sans_regular"
+                android:includeFontPadding="false"
+                android:text="사이즈"
                 android:textColor="@color/theme_sub_color"
-                android:textSize="12dp" />
+                android:textSize="18dp" />
 
-            <Button
-                android:layout_width="60dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/select_round_corner"
-                android:fontFamily="@font/noto_sans_bold"
-                android:text="XL"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/select_round_corner"
+                    android:fontFamily="@font/noto_sans_bold"
+                    android:text="S"
+                    android:textColor="@color/theme_sub_color"
+                    android:textSize="12dp" />
+
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/select_round_corner"
+                    android:fontFamily="@font/noto_sans_bold"
+                    android:text="M"
+                    android:textColor="@color/theme_sub_color"
+                    android:textSize="12dp" />
+
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/select_round_corner"
+                    android:fontFamily="@font/noto_sans_bold"
+                    android:text="L"
+                    android:textColor="@color/theme_sub_color"
+                    android:textSize="12dp" />
+
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/select_round_corner"
+                    android:fontFamily="@font/noto_sans_bold"
+                    android:text="XL"
+                    android:textColor="@color/theme_sub_color"
+                    android:textSize="12dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/noto_sans_regular"
+                android:includeFontPadding="false"
+                android:text="상품상세"
+                android:textColor="@color/theme_sub_color"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/clothes_info_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/noto_sans_regular"
+                android:includeFontPadding="false"
+                android:text="#겨울, #따뜻한, #신상품"
                 android:textColor="@color/theme_sub_color"
                 android:textSize="12dp" />
 
         </LinearLayout>
 
-        <TextView
+        <Button
+            android:id="@+id/btn_save_clothes_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginBottom="30dp"
+            android:background="@color/theme_sub_color"
             android:fontFamily="@font/noto_sans_regular"
-            android:includeFontPadding="false"
-            android:text="상품상세"
-            android:textColor="@color/theme_sub_color"
-            android:textSize="18dp" />
+            android:text="옷장에 넣기"
+            android:textColor="@color/theme_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/clothes_info_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:fontFamily="@font/noto_sans_regular"
-            android:includeFontPadding="false"
-            android:text="#겨울, #따뜻한, #신상품"
-            android:textColor="@color/theme_sub_color"
-            android:textSize="12dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_save_clothes_info"
+    <include
+        android:id="@+id/not_network_layout"
+        layout="@layout/layout_no_network_available"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginBottom="30dp"
-        android:background="@color/theme_sub_color"
-        android:fontFamily="@font/noto_sans_regular"
-        android:text="옷장에 넣기"
-        android:textColor="@color/theme_color"
+        android:layout_height="0dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_title" />
 
+    <include
+        android:id="@+id/loading_bar"
+        layout="@layout/layout_loading_progress"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
