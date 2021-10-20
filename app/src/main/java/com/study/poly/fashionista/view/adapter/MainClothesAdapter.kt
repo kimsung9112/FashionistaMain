@@ -10,8 +10,7 @@ import com.study.poly.fashionista.utility.onThrottleFirstClick
 class MainClothesAdapter(
     private val clothesUrlList: ArrayList<String>,
     val viewHandler: (itemName: String) -> Unit
-) :
-    RecyclerView.Adapter<MainClothesAdapter.MainClothesViewHolder>() {
+) : RecyclerView.Adapter<MainClothesAdapter.MainClothesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainClothesViewHolder {
         val view =

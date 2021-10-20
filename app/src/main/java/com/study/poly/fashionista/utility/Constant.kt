@@ -14,4 +14,10 @@ object Constant {
     const val PATH_PANTS = "/main_img/pants"
     const val PATH_T_SHIRT = "/main_img/t_shirt"
 
+    const val CATEGORY_HOOD = "HOOD_INFO"
+    const val CATEGORY_OUTER = "OUTER_INFO"
+    const val CATEGORY_PANTS = "PANTS_INFO"
+    const val CATEGORY_T_SHIRT = "T_SHIRT_INFO"
+    const val USER_PATH = "USER_CLOTHES"
+
 }

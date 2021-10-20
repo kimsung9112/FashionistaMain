@@ -2,13 +2,11 @@ package com.study.poly.fashionista.view.main.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
-import com.study.poly.fashionista.R
 import com.study.poly.fashionista.base.BaseActivity
-import com.study.poly.fashionista.data.entity.ClothesEntity
+import com.study.poly.fashionista.data.ClothesModel
 import com.study.poly.fashionista.databinding.ActivityClothesMoreBinding
 import com.study.poly.fashionista.utility.*
 import com.study.poly.fashionista.view.adapter.MoreClothesAdapter
@@ -28,7 +26,7 @@ class ClothesMoreActivity :
     }
 
     private lateinit var db: CollectionReference
-    private val clothesList = ArrayList<ClothesEntity>()
+    private val clothesList = ArrayList<ClothesModel>()
     private var path: String = ""
     private val job: Job = Job()
     override val coroutineContext: CoroutineContext
@@ -100,10 +98,10 @@ class ClothesMoreActivity :
         clothesList.clear()
 
         db.get().await().documents.forEach { document ->
-            document.toObject(ClothesEntity::class.java)?.let { data ->
+            document.toObject(ClothesModel::class.java)?.let { data ->
                 clothesList.add(data)
             }
-        }.run {
+        }.also {
             withContext(Dispatchers.Main) {
                 setRecyclerView()
                 dismissProgress()

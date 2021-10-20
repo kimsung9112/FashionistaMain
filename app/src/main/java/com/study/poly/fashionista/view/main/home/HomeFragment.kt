@@ -10,6 +10,10 @@ import com.study.poly.fashionista.R
 import com.study.poly.fashionista.base.BaseFragment
 import com.study.poly.fashionista.databinding.FragmentHomeBinding
 import com.study.poly.fashionista.utility.*
+import com.study.poly.fashionista.utility.Constant.CATEGORY_HOOD
+import com.study.poly.fashionista.utility.Constant.CATEGORY_OUTER
+import com.study.poly.fashionista.utility.Constant.CATEGORY_PANTS
+import com.study.poly.fashionista.utility.Constant.CATEGORY_T_SHIRT
 
 import com.study.poly.fashionista.utility.Constant.PATH_BANNER
 import com.study.poly.fashionista.utility.Constant.PATH_HOOD
@@ -142,16 +146,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             }
 
             else -> {
-
-            }
-        }.run {
-
-            withContext(Dispatchers.Main) {
-                setViewPager()
-                setRecyclerView()
-                dismissProgress()
+                return@withContext
             }
         }
+
+        withContext(Dispatchers.Main) {
+            setViewPager()
+            setRecyclerView()
+            dismissProgress()
+        }
+
     }
 
     private fun setViewPager() = with(binding) {
@@ -166,28 +170,28 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
         layoutHood.clothesRecyclerview.let { list ->
             list.adapter = MainClothesAdapter(hoodList) { url ->
-                intent.putExtra(ClothesDetailActivity.CATEGORY_PATH, "HOOD_INFO")
+                intent.putExtra(ClothesDetailActivity.CATEGORY_PATH, CATEGORY_HOOD)
                 intent.putExtra(ClothesDetailActivity.IMAGE_PATH, url)
                 moveNext(intent)
             }
         }
         layoutOvercoat.clothesRecyclerview.let { list ->
             list.adapter = MainClothesAdapter(outerList) { url ->
-                intent.putExtra(ClothesDetailActivity.CATEGORY_PATH, "OUTER_INFO")
+                intent.putExtra(ClothesDetailActivity.CATEGORY_PATH, CATEGORY_OUTER)
                 intent.putExtra(ClothesDetailActivity.IMAGE_PATH, url)
                 moveNext(intent)
             }
         }
         layoutPants.clothesRecyclerview.let { list ->
             list.adapter = MainClothesAdapter(pantsList) { url ->
-                intent.putExtra(ClothesDetailActivity.CATEGORY_PATH, "PANTS_INFO")
+                intent.putExtra(ClothesDetailActivity.CATEGORY_PATH, CATEGORY_PANTS)
                 intent.putExtra(ClothesDetailActivity.IMAGE_PATH, url)
                 moveNext(intent)
             }
         }
         layoutShirt.clothesRecyclerview.let { list ->
             list.adapter = MainClothesAdapter(tShirtList) { url ->
-                intent.putExtra(ClothesDetailActivity.CATEGORY_PATH, "T_SHIRT_INFO")
+                intent.putExtra(ClothesDetailActivity.CATEGORY_PATH, CATEGORY_T_SHIRT)
                 intent.putExtra(ClothesDetailActivity.IMAGE_PATH, url)
                 moveNext(intent)
             }

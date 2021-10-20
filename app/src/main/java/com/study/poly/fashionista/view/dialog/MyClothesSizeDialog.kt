@@ -99,6 +99,8 @@ class MyClothesSizeDialog(context: Context) :
     }
 
     // bmi 계산값 넣기
+    //90 95 100 105 110
+    //S   m   l    xl  xxl
     private fun calculateBmi() {
 
         dismiss()

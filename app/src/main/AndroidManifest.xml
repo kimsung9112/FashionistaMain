@@ -12,34 +12,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fashionista">
-
+        <activity
+            android:name=".view.main.setting.MyClothesActivity"
+            android:exported="true" />
         <activity
             android:name=".view.login.JoinActivity"
             android:exported="true"
             android:screenOrientation="nosensor" />
-
         <activity
             android:name=".view.login.LoginActivity"
             android:exported="true"
             android:screenOrientation="nosensor" />
-
         <activity
             android:name=".view.login.IntroActivity"
             android:exported="true"
             android:screenOrientation="nosensor">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".view.main.home.ClothesMoreActivity"
             android:exported="true"
             android:screenOrientation="nosensor" />
-
         <activity
             android:name=".view.main.home.ClothesDetailActivity"
             android:exported="true"
@@ -48,7 +45,6 @@
             android:name=".view.main.HomeActivity"
             android:exported="true"
             android:screenOrientation="nosensor" />
-
     </application>
 
 </manifest>

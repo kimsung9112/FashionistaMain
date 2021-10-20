@@ -3,13 +3,13 @@ package com.study.poly.fashionista.view.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.study.poly.fashionista.data.entity.ClothesEntity
+import com.study.poly.fashionista.data.ClothesModel
 import com.study.poly.fashionista.databinding.ListviewItemMoreClothesBinding
 import com.study.poly.fashionista.utility.loadImage
 import com.study.poly.fashionista.utility.onThrottleFirstClick
 
 class MoreClothesAdapter(
-    private val clothesList: ArrayList<ClothesEntity>,
+    private val clothesList: ArrayList<ClothesModel>,
     val viewHandler: (itemName: String) -> Unit
 ) : RecyclerView.Adapter<MoreClothesAdapter.MoreClothesViewHolder>() {
 
@@ -32,7 +32,7 @@ class MoreClothesAdapter(
     inner class MoreClothesViewHolder(private val binding: ListviewItemMoreClothesBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bindWithView(clothesInfo: ClothesEntity) = with(binding) {
+        fun bindWithView(clothesInfo: ClothesModel) = with(binding) {
 
             clothesImg.loadImage(clothesInfo.TitlePath)
             clothesName.text = clothesInfo.Name
