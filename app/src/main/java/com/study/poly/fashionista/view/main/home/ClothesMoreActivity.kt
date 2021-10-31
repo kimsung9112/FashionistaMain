@@ -10,6 +10,7 @@ import com.study.poly.fashionista.data.ClothesModel
 import com.study.poly.fashionista.databinding.ActivityClothesMoreBinding
 import com.study.poly.fashionista.utility.*
 import com.study.poly.fashionista.view.adapter.MoreClothesAdapter
+import com.study.poly.fashionista.view.dialog.IBmiResult
 import com.study.poly.fashionista.view.dialog.MyClothesSizeDialog
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
@@ -19,6 +20,7 @@ import kotlin.coroutines.CoroutineContext
 
 class ClothesMoreActivity :
     BaseActivity<ActivityClothesMoreBinding>({ ActivityClothesMoreBinding.inflate(it) }),
+    IBmiResult,
     CoroutineScope {
 
     companion object {
@@ -126,12 +128,15 @@ class ClothesMoreActivity :
 
     private fun dialogShow() {
 
-        val dialog = MyClothesSizeDialog(this)
+        val dialog = MyClothesSizeDialog(this,this)
 
         binding.btnSizeGet.onThrottleFirstClick {
             dialog.show()
         }
 
+    }
+
+    override fun getSize(bmiSize: String) {
     }
 
     override fun onDestroy() {

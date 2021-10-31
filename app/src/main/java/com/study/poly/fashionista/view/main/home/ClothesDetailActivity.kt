@@ -1,7 +1,6 @@
 package com.study.poly.fashionista.view.main.home
 
 import android.os.Bundle
-import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore

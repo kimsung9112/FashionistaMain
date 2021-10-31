@@ -1,27 +1,19 @@
 package com.study.poly.fashionista.view.login
 
-import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import com.study.poly.fashionista.R
 import com.study.poly.fashionista.base.BaseActivity
 import com.study.poly.fashionista.databinding.ActivityIntroBinding
 import com.study.poly.fashionista.utility.moveNextAnim
 import com.study.poly.fashionista.utility.toast
-import android.content.pm.PackageManager
 
-import android.content.pm.PackageInfo
-import android.util.Base64
 import com.google.firebase.auth.FirebaseAuth
 import com.study.poly.fashionista.view.main.HomeActivity
-import com.study.poly.fashionista.view.main.home.ClothesMoreActivity
-import java.security.MessageDigest
-import java.security.NoSuchAlgorithmException
 
 
 class IntroActivity : BaseActivity<ActivityIntroBinding>({ ActivityIntroBinding.inflate(it) }) {

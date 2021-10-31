@@ -32,10 +32,17 @@
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Fashionista/app/src/main/res/layout/listview_item_more_clothes.xml" value="0.33" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Fashionista/app/src/main/res/layout/viewpager_item.xml" value="0.32447916666666665" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Fashionista/app/src/main/res/menu/menu.xml" value="0.19444444444444445" />
+        <entry key="..\:/Users/win10/AndroidStudioProjects/Fashionistaremake/app/src/main/res/layout/activity_clothes_detail.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/win10/AndroidStudioProjects/Fashionistaremake/app/src/main/res/layout/dialog_my_clothes_size.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/win10/AndroidStudioProjects/Fashionistaremake/app/src/main/res/layout/fragment_home.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/win10/AndroidStudioProjects/Fashionistaremake/app/src/main/res/layout/fragment_setting.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/win10/AndroidStudioProjects/Fashionistaremake/app/src/main/res/layout/layout_clothes_list.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/win10/AndroidStudioProjects/Fashionistaremake/app/src/main/res/layout/listview_item_clothes.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/win10/AndroidStudioProjects/Fashionistaremake/app/src/main/res/layout/viewpager_item.xml" value="0.36614583333333334" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

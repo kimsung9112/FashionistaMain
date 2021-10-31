@@ -36,7 +36,7 @@ class MoreClothesAdapter(
 
             clothesImg.loadImage(clothesInfo.TitlePath)
             clothesName.text = clothesInfo.Name
-            clothesSize.text = "사이즈: M"  // 추후 DB 가져올 것
+            clothesSize.text = clothesInfo.Size.toString()
             clothesDetailInfo.text = "상세설명: ${clothesInfo.Info}"
             clothesShop.text = "쇼핑몰: ${clothesInfo.Shop}"
 

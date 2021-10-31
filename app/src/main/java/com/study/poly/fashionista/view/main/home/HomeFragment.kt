@@ -104,44 +104,33 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         showProgress()
 
         when (bannerList.size) {
-
             0 -> {
-
                 arrayPath.forEach { path ->
-
                     val listClothes = storageRef.reference.child(path).listAll()
-
-                    when (path) {
-                        PATH_BANNER -> {
-                            listClothes.await().items.forEach { storage ->
-                                bannerList.add(storage.downloadUrl.await().toString())
+                    listClothes.await().items.map { storage ->
+                        async {
+                            when (path) {
+                                PATH_BANNER -> {
+                                    bannerList.add(storage.downloadUrl.await().toString())
+                                }
+                                PATH_HOOD -> {
+                                    hoodList.add(storage.downloadUrl.await().toString())
+                                }
+                                PATH_OUTER -> {
+                                    outerList.add(storage.downloadUrl.await().toString())
+                                }
+                                PATH_PANTS -> {
+                                    pantsList.add(storage.downloadUrl.await().toString())
+                                }
+                                PATH_T_SHIRT -> {
+                                    tShirtList.add(storage.downloadUrl.await().toString())
+                                }
+                                else -> {
+                                    return@async
+                                }
                             }
                         }
-                        PATH_HOOD -> {
-                            listClothes.await().items.forEach { storage ->
-                                hoodList.add(storage.downloadUrl.await().toString())
-                            }
-
-                        }
-                        PATH_OUTER -> {
-                            listClothes.await().items.forEach { storage ->
-                                outerList.add(storage.downloadUrl.await().toString())
-                            }
-
-                        }
-                        PATH_PANTS -> {
-                            listClothes.await().items.forEach { storage ->
-                                pantsList.add(storage.downloadUrl.await().toString())
-                            }
-
-                        }
-                        PATH_T_SHIRT -> {
-                            listClothes.await().items.forEach { storage ->
-                                tShirtList.add(storage.downloadUrl.await().toString())
-                            }
-
-                        }
-                    }
+                    }.awaitAll()
                 }
             }
 
@@ -155,11 +144,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             setRecyclerView()
             dismissProgress()
         }
-
     }
 
     private fun setViewPager() = with(binding) {
-
         slideViewpager.adapter = BannerAdapter(bannerList)
         dotIndicator.setViewPager2(slideViewpager)
     }
