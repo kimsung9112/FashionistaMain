@@ -86,9 +86,6 @@ class MyClothesSizeDialog(context: Context,private val bmiCallback : IBmiResult)
             weightEditTv.text.isEmpty() -> {
                 context.toast("몸무게를 작성해주세요.")
             }
-//            clothesTypeList.size == 0 -> {
-//                context.toast("카테고리를 골라주세요.")
-//            }
             else -> {
                 calculateBmi()
             }

@@ -80,7 +80,6 @@ class JoinActivity : BaseActivity<ActivityJoinBinding>({ ActivityJoinBinding.inf
                         infoStateTv.text = it.toString()
                     }
                 }
-
                 infoStateTv.visibleUI()
             }
     }

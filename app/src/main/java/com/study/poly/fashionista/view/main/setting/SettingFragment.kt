@@ -41,17 +41,17 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(FragmentSettingBind
         binding.secessionTv.setOnClickListener() {
             firebaseAuth.currentUser?.delete()
 
-            Toast.makeText(getActivity(),"회원탈퇴!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity,"회원탈퇴!",Toast.LENGTH_SHORT).show();
 
-            val intent = Intent(getActivity(), IntroActivity::class.java)
+            val intent = Intent(activity, IntroActivity::class.java)
             startActivity(intent)
         }
 
         binding.loginOutTv.onThrottleFirstClick {
             firebaseAuth.signOut()
-            Toast.makeText(getActivity(),"로그아웃!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity,"로그아웃!",Toast.LENGTH_SHORT).show();
 
-            val intent = Intent(getActivity(), IntroActivity::class.java)
+            val intent = Intent(activity, IntroActivity::class.java)
             startActivity(intent)
 
         }

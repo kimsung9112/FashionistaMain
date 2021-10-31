@@ -94,44 +94,68 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/s_btn"
                     android:layout_width="60dp"
                     android:layout_height="40dp"
                     android:layout_marginEnd="15dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="7dp"
                     android:background="@drawable/select_round_corner"
                     android:fontFamily="@font/noto_sans_bold"
                     android:text="S"
                     android:textColor="@color/theme_sub_color"
-                    android:textSize="12dp" />
+                    android:textSize="12dp"
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/m_btn"
                     android:layout_width="60dp"
                     android:layout_height="40dp"
                     android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="7dp"
                     android:background="@drawable/select_round_corner"
                     android:fontFamily="@font/noto_sans_bold"
                     android:text="M"
                     android:textColor="@color/theme_sub_color"
-                    android:textSize="12dp" />
+                    android:textSize="12dp"
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/l_btn"
                     android:layout_width="60dp"
                     android:layout_height="40dp"
                     android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="7dp"
                     android:background="@drawable/select_round_corner"
                     android:fontFamily="@font/noto_sans_bold"
                     android:text="L"
                     android:textColor="@color/theme_sub_color"
-                    android:textSize="12dp" />
+                    android:textSize="12dp"
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/xl_btn"
                     android:layout_width="60dp"
                     android:layout_height="40dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="7dp"
                     android:background="@drawable/select_round_corner"
                     android:fontFamily="@font/noto_sans_bold"
                     android:text="XL"
                     android:textColor="@color/theme_sub_color"
-                    android:textSize="12dp" />
+                    android:textSize="12dp"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/xxl_btn"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="@drawable/select_round_corner"
+                    android:fontFamily="@font/noto_sans_bold"
+                    android:text="XXL"
+                    android:textColor="@color/theme_sub_color"
+                    android:textSize="12dp"
+                    android:visibility="gone" />
 
             </LinearLayout>
 

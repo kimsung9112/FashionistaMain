@@ -1,6 +1,8 @@
 package com.study.poly.fashionista.view.main.home
 
 import android.os.Bundle
+import android.util.Size
+import androidx.core.view.isGone
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
@@ -63,8 +65,8 @@ class ClothesDetailActivity :
         getData()
     }
 
-    private fun setClothesInfoSave() {
 
+    private fun setClothesInfoSave() {
         val model = ClothesSaveModel(
             email,
             categoryPath,
@@ -74,7 +76,7 @@ class ClothesDetailActivity :
 
         saveDB = FirebaseFirestore.getInstance()
 
-        saveDB.collection(USER_PATH).whereEqualTo("titlePath", imagePath).get()
+        saveDB.collection(USER_PATH).whereEqualTo("titlePath", imagePath).whereEqualTo("email",email).get()
             .addOnSuccessListener {
                 if (it.isEmpty) {
                     saveDB.collection(USER_PATH).document(documentName).set(model)
@@ -131,14 +133,15 @@ class ClothesDetailActivity :
 
     private fun setViewPager() = with(binding) {
 
-        val imageUrl = arrayListOf(
-            clothesInfo.TitlePath,
-            clothesInfo.ImageUrl?.get(0).toString(),
-            clothesInfo.ImageUrl?.get(1).toString()
-        )
-
+        val imageUrl = arrayListOf(clothesInfo.TitlePath)
+        clothesInfo.ImageUrl?.map { imageUrl.add(it) }
         clothesViewpager.adapter = BannerAdapter(imageUrl)
-        dotIndicator.setViewPager2(clothesViewpager)
+        if (imageUrl.size == 1) {
+            dotIndicator.hideUI()
+        } else {
+            dotIndicator.setViewPager2(clothesViewpager)
+            dotIndicator.visibleUI()
+        }
     }
 
     private fun setClothesInfo() = with(binding) {
@@ -148,6 +151,26 @@ class ClothesDetailActivity :
             clothesNameTv.text = "옷이름: ${info.Name}"
             clothesInfoTv.text = info.Info
         }
+        btnVisible()
+    }
+
+    private fun btnVisible() = with(binding){
+
+        val sizeList = clothesInfo.Size
+
+        if (sizeList != null) {
+            for(size in sizeList){
+                when(size){
+                    "S" ->sBtn.visibleUI()
+                    "M" ->mBtn.visibleUI()
+                    "L" ->lBtn.visibleUI()
+                    "XL" ->xlBtn.visibleUI()
+                    "XXL" ->xxlBtn.visibleUI()
+
+                }
+            }
+        }
+
     }
 
     override fun onDestroy() {
