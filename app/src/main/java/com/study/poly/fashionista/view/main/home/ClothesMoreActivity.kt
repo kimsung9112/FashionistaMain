@@ -3,10 +3,12 @@ package com.study.poly.fashionista.view.main.home
 import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.study.poly.fashionista.base.BaseActivity
 import com.study.poly.fashionista.data.ClothesModel
+import com.study.poly.fashionista.data.ClothesSaveModel
 import com.study.poly.fashionista.databinding.ActivityClothesMoreBinding
 import com.study.poly.fashionista.utility.*
 import com.study.poly.fashionista.view.adapter.MoreClothesAdapter
@@ -30,6 +32,7 @@ class ClothesMoreActivity :
     private lateinit var db: CollectionReference
     private val clothesList = ArrayList<ClothesModel>()
     private var path: String = ""
+    private var mysize : String = ""
     private val job: Job = Job()
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + job
@@ -137,7 +140,42 @@ class ClothesMoreActivity :
     }
 
     override fun getSize(bmiSize: String)= with(binding) {
+        mysize = bmiSize
         btnSizeGet.text = "내사이즈 : $bmiSize"
+        titleLayout.titleTv.text = "나에게 맞는옷"
+        getDataSize()
+    }
+
+    private fun getDataSize() {
+
+        launch {
+            try {
+                getListSize()
+            } catch (e: UnknownHostException) {
+                binding.notNetworkLayout.root.visibleUI()
+            } catch (e: Exception) {
+                toast("error:$e")
+            }
+        }
+    }
+
+    private suspend fun getListSize() = withContext(Dispatchers.IO) {
+
+
+        clothesList.clear()
+
+        db = FirebaseFirestore.getInstance().collection(path)
+
+        db.whereArrayContains("size",mysize).get().await().documents.forEach { document ->
+            document.toObject(ClothesModel::class.java)?.let { data ->
+                clothesList.add(data)
+            }
+        }.also {
+            withContext(Dispatchers.Main) {
+                setRecyclerView()
+                dismissProgress()
+            }
+        }
     }
 
     override fun onDestroy() {

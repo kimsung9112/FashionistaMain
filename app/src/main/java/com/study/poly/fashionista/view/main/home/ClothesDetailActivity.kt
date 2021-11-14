@@ -123,7 +123,7 @@ class ClothesDetailActivity :
         email = FirebaseAuth.getInstance().currentUser?.email.toString()
 
         db = FirebaseFirestore.getInstance().collection(categoryPath)
-        db.whereEqualTo("TitlePath", imagePath).get().await().documents.forEach { document ->
+        db.whereEqualTo("titlePath", imagePath).get().await().documents.forEach { document ->
             document.toObject(ClothesModel::class.java)?.let { data ->
                 clothesInfo = data
             }
@@ -138,7 +138,7 @@ class ClothesDetailActivity :
 
     private fun setViewPager() = with(binding) {
 
-        val imageUrl = arrayListOf(clothesInfo.TitlePath)
+        val imageUrl = arrayListOf(clothesInfo.titlePath)
         clothesInfo.ImageUrl?.map { imageUrl.add(it) }
         clothesViewpager.adapter = BannerAdapter(imageUrl)
         if (imageUrl.size == 1) {
@@ -152,16 +152,16 @@ class ClothesDetailActivity :
     private fun setClothesInfo() = with(binding) {
 
         clothesInfo.let { info ->
-            clothesShopTv.text = "쇼핑몰: ${info.Shop}"
-            clothesNameTv.text = "옷이름: ${info.Name}"
-            clothesInfoTv.text = info.Info
+            clothesShopTv.text = "쇼핑몰: ${info.shop}"
+            clothesNameTv.text = "옷이름: ${info.name}"
+            clothesInfoTv.text = info.info
         }
         btnVisible()
     }
 
     private fun btnVisible() = with(binding){
 
-        val sizeList = clothesInfo.Size
+        val sizeList = clothesInfo.size
 
         if (sizeList != null) {
             for(size in sizeList){

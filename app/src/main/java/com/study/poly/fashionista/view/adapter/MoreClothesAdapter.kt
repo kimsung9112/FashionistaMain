@@ -34,14 +34,14 @@ class MoreClothesAdapter(
 
         fun bindWithView(clothesInfo: ClothesModel) = with(binding) {
 
-            clothesImg.loadImage(clothesInfo.TitlePath)
-            clothesName.text = clothesInfo.Name
-            clothesSize.text = clothesInfo.Size.toString()
-            clothesDetailInfo.text = "상세설명: ${clothesInfo.Info}"
-            clothesShop.text = "쇼핑몰: ${clothesInfo.Shop}"
+            clothesImg.loadImage(clothesInfo.titlePath)
+            clothesName.text = clothesInfo.name
+            clothesSize.text = clothesInfo.size.toString()
+            clothesDetailInfo.text = "상세설명: ${clothesInfo.info}"
+            clothesShop.text = "쇼핑몰: ${clothesInfo.shop}"
 
             binding.root.onThrottleFirstClick {
-                viewHandler.invoke(clothesInfo.TitlePath)
+                viewHandler.invoke(clothesInfo.titlePath)
             }
         }
     }
