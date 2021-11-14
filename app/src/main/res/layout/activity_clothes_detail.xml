@@ -184,16 +184,32 @@
 
         <Button
             android:id="@+id/btn_save_clothes_info"
-            android:layout_width="match_parent"
+            android:layout_width="175dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="15dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="32dp"
             android:background="@color/theme_sub_color"
             android:fontFamily="@font/noto_sans_regular"
             android:text="옷장에 넣기"
             android:textColor="@color/theme_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btn_go_clothes"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="32dp"
+            android:background="@color/theme_sub_color"
+            android:fontFamily="@font/noto_sans_regular"
+            android:text="옷장으로 가기"
+            android:textColor="@color/theme_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

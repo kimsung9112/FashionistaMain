@@ -45,6 +45,11 @@ class JoinActivity : BaseActivity<ActivityJoinBinding>({ ActivityJoinBinding.inf
                 infoStateTv.visibleUI()
             }
 
+            passwordEdit.text.toString() != checkEdit.text.toString() -> {
+                infoStateTv.text = "패스워드가 다릅니다 \n다시 입력해주세요."
+                infoStateTv.visibleUI()
+            }
+
             else -> {
                 firebaseAuthSend()
                 infoStateTv.hideUI()

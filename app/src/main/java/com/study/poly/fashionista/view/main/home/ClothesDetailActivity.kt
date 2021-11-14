@@ -1,8 +1,7 @@
 package com.study.poly.fashionista.view.main.home
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Size
-import androidx.core.view.isGone
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
@@ -16,6 +15,7 @@ import com.study.poly.fashionista.utility.onThrottleFirstClick
 import com.study.poly.fashionista.utility.toast
 import com.study.poly.fashionista.utility.visibleUI
 import com.study.poly.fashionista.view.adapter.BannerAdapter
+import com.study.poly.fashionista.view.main.setting.MyClothesActivity
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
 import java.lang.Exception
@@ -63,6 +63,11 @@ class ClothesDetailActivity :
         }
 
         getData()
+
+        btnGoClothes.setOnClickListener {
+            val intent = Intent(this@ClothesDetailActivity, MyClothesActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 

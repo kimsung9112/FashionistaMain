@@ -58,6 +58,18 @@
             android:maxLines="1"
             android:textColor="@color/theme_sub_color" />
 
+        <EditText
+            android:id="@+id/check_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/noto_sans_regular"
+            android:hint="Password Check"
+            android:includeFontPadding="false"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textColor="@color/theme_sub_color" />
+
         <TextView
             android:id="@+id/info_state_tv"
             android:layout_width="match_parent"

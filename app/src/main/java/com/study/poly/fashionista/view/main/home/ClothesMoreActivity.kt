@@ -136,7 +136,8 @@ class ClothesMoreActivity :
 
     }
 
-    override fun getSize(bmiSize: String) {
+    override fun getSize(bmiSize: String)= with(binding) {
+        btnSizeGet.text = "내사이즈 : $bmiSize"
     }
 
     override fun onDestroy() {
