@@ -101,7 +101,7 @@ class MyClothesSizeDialog(context: Context,private val bmiCallback : IBmiResult)
             bmi > 30 -> "XXL"
             bmi > 25 -> "XL"
             bmi > 23 -> "L"
-            bmi > 18 -> "M"
+            bmi > 18.5 -> "M"
             else -> "S"
         }
         bmiCallback.getSize(size)
