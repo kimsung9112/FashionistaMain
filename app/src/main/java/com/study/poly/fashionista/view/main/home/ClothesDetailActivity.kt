@@ -1,6 +1,7 @@
 package com.study.poly.fashionista.view.main.home
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
@@ -152,9 +153,13 @@ class ClothesDetailActivity :
     private fun setClothesInfo() = with(binding) {
 
         clothesInfo.let { info ->
-            clothesShopTv.text = "쇼핑몰: ${info.shop}"
-            clothesNameTv.text = "옷이름: ${info.name}"
+            clothesShopTv.text = "쇼핑몰 : ${info.shop}"
+            clothesNameTv.text = "옷이름 : ${info.name}"
             clothesInfoTv.text = info.info
+            clothesShopTv.setOnClickListener{
+                var intent = Intent(Intent.ACTION_VIEW, Uri.parse(info.url))
+                startActivity(intent)
+            }
         }
         btnVisible()
     }

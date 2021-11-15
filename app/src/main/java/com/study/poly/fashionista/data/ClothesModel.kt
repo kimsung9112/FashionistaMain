@@ -6,6 +6,7 @@ data class ClothesModel(
     val shop: String = "",    // 쇼핑몰
     val info: String = "",    // 상품정보 ex) #쿨톤,#여름,#데일리
     val titlePath: String = "", // 상품 대표 이미지 url
+    val url: String="",
     val size : ArrayList<String>? = null,
     val ImageUrl: ArrayList<String>? = null
 )

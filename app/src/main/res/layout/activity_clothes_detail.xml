@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/noto_sans_regular"
                 android:includeFontPadding="false"
-                android:text="쇼핑몰: 무신사"
+                android:text="쇼핑몰 : 무신사"
                 android:textColor="@color/theme_sub_color"
                 android:textSize="18dp" />
 
@@ -72,7 +72,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/noto_sans_regular"
                 android:includeFontPadding="false"
-                android:text="옷이름: 겨울 아우터"
+                android:text="옷이름 : 겨울 아우터"
                 android:textColor="@color/theme_sub_color"
                 android:textSize="18dp" />
 
@@ -83,7 +83,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/noto_sans_regular"
                 android:includeFontPadding="false"
-                android:text="사이즈"
+                android:text="사이즈 : "
                 android:textColor="@color/theme_sub_color"
                 android:textSize="18dp" />
 
@@ -178,7 +178,8 @@
                 android:includeFontPadding="false"
                 android:text="#겨울, #따뜻한, #신상품"
                 android:textColor="@color/theme_sub_color"
-                android:textSize="12dp" />
+                android:textSize="14dp" />
+
 
         </LinearLayout>
 
